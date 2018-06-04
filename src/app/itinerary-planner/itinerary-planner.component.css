@@ -1,0 +1,49 @@
+#itinerary{
+    
+    background: rgba(0, 0, 0, 0.5);
+    
+}
+#form{
+    font-size: 20px;
+}
+label{
+    color:whitesmoke;
+}
+#itinerary-bckg{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 100%100%;
+}
+
+h1 {
+    font-family: 'Ruthie';
+    font-size: 155px;
+    color: whitesmoke;
+    text-align:center
+}
+#link-to-plan{
+  font-family: 'Great Vibes';
+  font-size: 40px;
+  text-align:center;
+  color: whitesmoke;
+}
+#form{
+    font-family: cursive
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; 
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; 
+  }
+  .reqalert{
+    color:orangered;
+
+  }
+  @media (max-width: 600px) {
+    h1{font-size:120px;}
+    #link-to-plan{font-size:30px;}
+   }

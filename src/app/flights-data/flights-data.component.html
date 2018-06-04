@@ -1,0 +1,26 @@
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+    <th>Select</th>
+    <th>Airlines</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Arrival</th>
+    <th>Departure</th>
+    <th>Fare</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr *ngFor="let flight of chooseflight">    
+    <td><input type="checkbox" (change)='flightselected(flight)'></td>
+    <td>{{flight.airlines}}</td>
+    <td>{{flight.source}}</td>
+    <td>{{flight.destination}}</td>
+    <td>{{flight.arrival}}</td>
+    <td>{{flight.departure}}</td>
+    <td>{{flight.fare}}</td>
+  </tr>
+ </tbody>
+</table>
+</div>

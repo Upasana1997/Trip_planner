@@ -1,0 +1,19 @@
+.tab {
+    text-align: center;
+    border: none;
+}
+
+.tab button {
+    border: none;
+    outline: none;
+    padding: 16px 16px;
+    font-size: 20px;
+    font-family: cursive
+}
+
+.req
+{
+    size:5px;
+    color:red;
+    font-color:red;
+}

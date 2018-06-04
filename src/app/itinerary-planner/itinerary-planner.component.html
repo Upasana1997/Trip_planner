@@ -1,0 +1,98 @@
+<link href='https://fonts.googleapis.com/css?family=Ruthie' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+<div>
+  <div id="itinerary-bckg" [ngStyle]="{'background-image': 'url(' + imagePath + ')'}">
+    <app-nav-bar-login></app-nav-bar-login>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div>
+      <h1>Fernweh</h1>
+      <p id="link-to-plan">
+        Plan your perfect getaway
+      </p>
+    </div>
+    <br>
+    <br>
+
+
+    <div id="itinerary" class="container">
+      <div class="row">
+        <br>
+        <form class="form-inline" #tripForm="ngForm" (ngSubmit)="submitTrip(tripForm)">
+          <div class="row">
+            <div class="form-group col-md-4 col-sm-4">
+              <label for="Tripsource">Source:</label>&nbsp;&nbsp;
+              <input type="text" class="form-control" id="Tripsource" placeholder="Enter source" pattern="[a-zA-Z ]+[a-zA-Z]$" name="source"
+                [(ngModel)]="Source" required #source="ngModel">
+              <div [hidden]="source.valid || source.pristine" class="reqalert">
+                <div [hidden]="!source.hasError('required')">
+                  Please fill source</div>
+                <div [hidden]="!source.hasError('pattern')">
+                  Enter a valid source(2 characters atleast)</div>
+              </div>
+            </div>
+            <div class="form-group col-md-4 col-sm-4">
+              <label for="Tripdest">Destination:</label>
+              <input type="text" class="form-control" id="Tripdest" placeholder="Enter destination" pattern="[a-zA-Z ]+[a-zA-Z]$" name="dest"
+                [(ngModel)]="Dest" required #dest="ngModel">
+              <div [hidden]="dest.valid || dest.pristine" class="reqalert" >
+                <div [hidden]="!dest.hasError('required')">
+                  Please give a destination</div>
+                <div [hidden]="!dest.hasError('pattern')">
+                  Enter a valid destination(2 characters atleast)</div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-4 col-sm-4">
+              <label for="Triptravellers">People:</label>
+              <input type="number" class="form-control" id="Triptravellers" placeholder="Number of travellers" min="1" name="travellers"
+                pattern="^(0|[1-9][0-9]*)$" [(ngModel)]="Trav" required #travellers="ngModel">
+              <div [hidden]="travellers.valid || travellers.pristine" class="reqalert">
+                <div [hidden]="!travellers.hasError('required')">
+                  Please fill out number of people</div>
+
+                <div [hidden]="!travellers.hasError('pattern')">
+                  Travellers not valid</div>
+              </div>
+            </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="form-group col-md-4 col-sm-4">
+                <label for="tripstart">Start Date:</label>
+                <input type="date" class="form-control" id="tripstart" id="datefield" placeholder="Enter start date" name="start" min="{{date}}"
+                  [(ngModel)]="Start" required #start="ngModel">
+                <div [hidden]="start.valid || start.pristine" class="reqalert">
+                  <div [hidden]="!start.hasError('required')">
+                    Please give a starting date</div>
+                </div>
+
+              </div>
+              <div class="form-group col-md-4 col-sm-4">
+                <label for="tripend">End date:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="date" class="form-control" id="tripend" placeholder="Enter end date" name="end" min="{{date}}" [(ngModel)]="End"
+                  required #end="ngModel">
+                <div [hidden]="end.valid || end.pristine" class="reqalert">
+                  <div [hidden]="!end.hasError('required')">
+                    Please enter the ending date</div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <label for="plan">Plan your trip: </label>
+                <input type="submit" value="See your plan" [disabled]="!tripForm.form.valid" class="btn btn-warning" style="font-size:16px" id="plan">
+                
+              </div>
+            </div>
+        </form>
+        <br>
+        <br>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+  <app-trending-destinations></app-trending-destinations>

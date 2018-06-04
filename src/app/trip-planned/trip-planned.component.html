@@ -1,0 +1,224 @@
+<app-nav-bar-login></app-nav-bar-login>
+<link href='https://fonts.googleapis.com/css?family=Ruthie' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+
+<div id="trip-img" [ngStyle]="{'background-image': 'url(' + imagePath + ')'}">
+  <div style="height: 150px">
+  </div>
+  <div class="container">
+    <div class="tab">
+      <button type="button" id="yt_id" (click)="trip1()"><span class="fa fa-map"></span>
+        <strong>Trip</strong>
+      </button>
+      <button type="button" id="flight_id" (click)="fly()"><span class="fa fa-plane"></span>
+        <strong>Flights</strong>
+      </button>
+      <button type="button" id="hotel_id" (click)="hotel()"><span class="fa fa-hotel"></span>
+        <strong>Hotels</strong>
+      </button>
+    </div>
+  </div>
+  <div class="container">
+
+
+    <div *ngIf="ytrip" id="yt">
+      <br>
+      <div class="container">
+      <p id="trip_title"><b>YOUR PLANNED TRIP</b></p>
+
+      <p>
+        Selected Source:  {{src}} </p>
+      <p>
+        Selected Destination: {{dest}} </p>
+      <p>
+        Number of Travellers: {{trav}} </p>
+      <p>
+        Selected Start Date: {{start}} </p>
+      <p>
+        Selected End Date:  {{end}} </p>
+       <p><button class="btn btn-info" style="margin-left:300px" type="submit" (click)="prev_trips()">See Previous Trips</button></p>
+    </div>
+    </div>
+
+    <div id="flight_bck" *ngIf="flight">
+      <br>
+      <br>
+
+      <div class="tab" class="row" id="tab_id">
+        <a id="one_way" (click)="oneWay()">
+          <strong>One Way</strong>
+        </a>
+        <a id="round_trip" (click)="roundTrip()">
+          <strong>Round Trip</strong>
+        </a>
+      </div>
+
+      <br>
+
+      <div id="form_id">
+        <form class="form-inline" #flightForm="ngForm" (ngSubmit)="showflights(flightForm)">
+          <div class="row">
+            <div class="form-group col-md-2" id="left">
+              <label for="tripstart">Date:</label>
+              <input type="date" class="form-control" id="tripstart"  min="{{date}}" placeholder="Enter date" name="start" required #start="ngModel" [(ngModel)]="start_date">
+              <div [hidden]="start.valid || start.pristine" class="reqalert">
+                <div [hidden]="!start.hasError('required')">
+                  Please give start date</div>
+              </div>
+            </div>
+            <div class="col-md-3" *ngIf="roundtrip_id" id="left">
+              <label for="tripreturn">Return Date:</label>
+              <input type="date" class="form-control"  min="{{date}}" id="tripreturn" placeholder="Enter return date" name="return" #tripreturn="ngModel" required [(ngModel)]="return_date">
+              <div [hidden]="tripreturn.valid || tripreturn.pristine" class="reqalert">
+                <div [hidden]="!tripreturn.hasError('required')">
+                  Please give return date</div>
+              </div>
+              </div>
+            <div class="col-md-2" id="left">
+              <label for="book_flight">See flights: </label>
+              <input type="submit" class="btn btn-info" style="font-size:16px" [disabled]="!flightForm.form.valid" id="book_flight" value="See Flights">
+            </div>
+          </div>
+        </form>
+      </div>
+      <br>
+      <br>
+    </div>
+
+    <div *ngIf="hotels" id="hotel">
+      <br>
+      <br>
+      <br>
+      <div id="form_id">
+        <form class="form-inline" #hotelForm="ngForm" (ngSubmit)="showhotels(hotelForm)">
+          <div class="row">
+            <div class="form-group col-md-2" id="left">
+              <label for="checkin">Check In:</label>
+              <input type="date" class="form-control" id="checkin"  min="{{date}}" placeholder="Check In" name="checkin" #checkin="ngModel" required [(ngModel)]="CheckIn">
+              <div [hidden]="checkin.valid || checkin.pristine" class="reqalert">
+                <div [hidden]="!checkin.hasError('required')">
+                  Please give checkin date</div>
+              </div>
+            </div>
+            <div class="form-group col-md-2" id="left">
+              <label for="checkout">Check Out:</label>
+              <input type="date" class="form-control" id="checkout" min="{{date}}" placeholder="Check Out" name="checkout" #checkout="ngModel" required [(ngModel)]="CheckOut">
+              <div [hidden]="checkout.valid || checkout.pristine" class="reqalert">
+                <div [hidden]="!checkout.hasError('required')">
+                  Please give checkout date</div>
+              </div>
+            </div>
+            <div class="col-md-3" id="left">
+              <label for="room">Rooms:</label>
+              <input type="number" class="form-control" id="room" min="1" placeholder="Enter number of rooms" name="rooms" #rooms="ngModel" required [(ngModel)]="Rooms">
+              <div [hidden]="rooms.valid || rooms.pristine" class="reqalert">
+                <div [hidden]="!rooms.hasError('required')">
+                  Please enter number of rooms</div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label for="book_rooms">Show Hotels: </label>
+              <input type="submit" class="btn btn-info" style="font-size:16px" [disabled]="!hotelForm.form.valid" id="book_rooms" value="Show Hotels"/>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+  <div style="height: 150px">
+  </div>
+</div>
+
+<div class="container">
+ <!-- Previous trips -->
+ <div *ngIf="ytrip">
+   <br><br>
+  <div class="head"> <h4><b>Previous Trips Made</b></h4></div>
+ <div class="table-responsive">          
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Travellers</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of prevtrips">   
+        <td>{{trip.source}}</td>
+        <td>{{trip.destination}}</td>
+        <td>{{trip.travellers}}</td>
+        <td>{{trip.start}}</td>
+        <td>{{trip.end}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+  <!-- Flight details -->
+  <div *ngIf="flight">
+    <br><br>
+    <app-flights></app-flights>
+    <br><br>
+    <div class="container">
+
+      <div class="form-group">
+
+        <div *ngIf="showTable" class="row">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+        <app-flights-data [chooseflight]="res_flights" (selectflight)="flightselected($event)"></app-flights-data>
+        <input *ngIf="tablefly" type="submit" class="btn btn-info" style="font-size:16px" id="plan" value="Book Flight" (click)="bookflight()" />
+      <br>
+      <div class="row" style="margin:20px">
+          <div class="col-md-12">
+            <div *ngIf="tablefly">selected flight is {{selectflightname}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Hotel details -->
+  <div *ngIf="hotels">
+    <br>
+    <br>
+    <div>
+    <app-hotels></app-hotels></div>
+    <br>
+    <br>
+    <div class="container">
+
+      <div class="form-group">
+
+        <div *ngIf="showTable" class="row">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+        <app-hotels-data [choosehotel]="res_hotels" (selecthotel)="hotelselected($event)"></app-hotels-data>
+
+        <form class="form-inline" #InoutForm="ngForm" (ngSubmit)="bookhotel(InoutForm)">
+          <div class="row">
+          
+            <input *ngIf="tablehotel" type="submit" class="btn btn-info" style="font-size:16px" id="plan" value="Book Hotel" />
+          </div>
+        </form>
+
+        <div class="row" style="margin:20px">
+          <div class="col-md-12">
+            <div *ngIf="tablehotel">Selected Hotel is : {{selecthotelname}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

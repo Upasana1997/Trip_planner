@@ -1,0 +1,133 @@
+<div class="container">
+   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content"> 
+          <div class="tab">
+              <button style="width:49%" [ngStyle]="{'background-color': colorup1}" (click)="signup()" id="sign-up"><strong>Sign Up</strong></button>
+              <button style="width:49%" [ngStyle]="{'background-color': colorin1}"(click)="signin()" id="sign-in"><strong>Sign In</strong></button>
+          </div>
+        <div class="modal-body" *ngIf="signUp">
+            <form class="form-horizontal" #signupForm="ngForm" (ngSubmit)="submitsignupForm(signupForm)">
+              <div class="form-group">
+                  <label class="control-label col-sm-2" for="fname">First Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" pattern="[a-zA-Z ]+[a-zA-Z]$" id="fname" placeholder="Enter first name" name="fname" required ngModel #fname="ngModel"> <!--[(ngModel)]="fname"-->
+                    <div [hidden]="fname.valid || fname.pristine" class="req">
+                <div class="req"  [hidden]="!fname.hasError('required')">
+                *Required</div>
+                <div [hidden]="!fname.hasError('pattern')" class="req">
+                  Enter a valid name(2 characters atleast)</div>
+              </div>
+            </div>
+                  </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" pattern="[a-zA-Z ]+[a-zA-Z]$" id=";name" placeholder="Enter last name" name="lname" required ngModel #lname="ngModel">
+                        <div [hidden]="lname.valid || lname.pristine" class="req">
+                <div class="req" [hidden]="!lname.hasError('required')">
+                *Required</div>
+                <div [hidden]="!lname.hasError('pattern')" class="req">
+                  Enter a valid name(2 characters atleast)</div>
+              </div>
+            </div>
+                      </div>
+              
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" placeholder="Enter email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" required [(ngModel)]="Email" #email="ngModel">
+                  <div [hidden]="email.valid || email.pristine"
+                  class="req">
+              <div  class="req" [hidden]="!email.hasError('required')">
+              *Required</div>
+              <div class="req" [hidden]="!email.hasError('pattern')">Not a valid email
+                <small>
+                  <b>john123@gmail.com</b>
+                </small>
+              </div>
+          </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Password:</label>
+                <div class="col-sm-10">          
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required ngModel #pwd="ngModel">
+                  <div [hidden]="pwd.valid || pwd.pristine"
+                    class="req">
+                <div class="req"  [hidden]="!pwd.hasError('required')">
+                *Required</div>
+            </div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-2" for="repwd">Confirm Password:</label>
+                  <div class="col-sm-10">          
+                    <input type="password" class="form-control" id="repwd" placeholder="Re-enter password" name="repwd" #repwd="ngModel" required ngModel>
+                    <div [hidden]="repwd.valid || repwd.pristine" class="req">
+                <div class="req"  [hidden]="!repwd.hasError('required')">
+                *Required</div>
+            </div>
+                  </div>
+                </div>
+              <hr>
+              <div class="form-group">        
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-success"  data-dismiss="modal" [disabled]="!signupForm.form.valid" (click)="submitsignupForm(signupForm)" >Submit</button>  
+                  <button type="button" class="btn btn-warning" data-dismiss="modal" style="float:right;width:20%">Cancel</button>
+                </div>
+              </div>
+            </form>
+        </div>
+        
+
+        <div class="modal-header" *ngIf="signIn">
+            <form class="form-horizontal" action="/action_page.php" #signinForm="ngForm" >
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" name="emailin" [(ngModel)]="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emailin="ngModel" required>
+                  <div [hidden]="emailin.valid || emailin.pristine" class="req">
+                    <div class="req"  [hidden]="!emailin.hasError('required')">
+                    *Required</div>
+                    <div class="req" [hidden]="!emailin.hasError('pattern')">Not a valid email
+                      <small>
+                        <b>john123@gmail.com</b>
+                      </small>
+                    </div>
+                </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Password:</label>
+                <div class="col-sm-10">          
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwdin" #pwdin="ngModel" [(ngModel)]="Password" required>
+                  <div [hidden]="pwdin.valid || pwdin.pristine" class="req">
+                    <div class="req"  [hidden]="!pwdin.hasError('required')">
+                    *Required</div>
+                </div>
+                </div>
+              </div>
+              <hr>
+              <div class="form-group">        
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-success" data-dismiss="modal" [disabled]="!signinForm.form.valid" (click)="checksignin(signinForm)">Submit</button>
+                  <button type="button" class="btn btn-warning" data-dismiss="modal" style="float: right;width:20%">Cancel</button>
+                </div>
+                
+              </div>
+            </form>
+        </div>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+

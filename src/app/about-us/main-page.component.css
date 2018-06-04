@@ -1,0 +1,38 @@
+.image-head {
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 100%100%;
+  }
+h1 {
+    font-family: 'Ruthie';
+    font-size: 155px;
+    color: whitesmoke;
+    text-align:center
+}
+#link-to-plan{
+  font-family: 'Great Vibes';
+  font-size: 40px;
+  text-align:center;
+  color: whitesmoke;
+}
+#quote
+{
+  font-size: 30px;
+  text-align:center
+}
+
+#image-plan
+{
+  font-size: 30px;
+  color:mediumturquoise;
+}
+#trip-button{
+  text-align: center;
+}
+#trip-plan-button{
+  width:200px;
+  font-size:20px;
+  
+}
+

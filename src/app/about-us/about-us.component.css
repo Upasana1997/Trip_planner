@@ -1,0 +1,27 @@
+h1{
+    font-family: 'Ruthie';
+    font-size: 160px;
+    color: whitesmoke;
+    text-align:center
+}
+h3{
+    font-family: 'Great Vibes';
+  font-size: 40px;
+  text-align:center;
+  color: whitesmoke;
+}
+
+p{
+    font-family: cursive;
+    font-size: 25px;
+}
+#img-about{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 100%100%;
+}
+#img-side{
+    height:550px;
+    width:350px;
+}

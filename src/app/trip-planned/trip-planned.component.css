@@ -1,0 +1,101 @@
+h1{
+    font-family: 'Ruthie';
+    font-size: 160px;
+    color: whitesmoke;
+    text-align:center
+}
+h3{
+    font-family: 'Great Vibes';
+  font-size: 45px;
+  text-align:center;
+  color: whitesmoke;
+}
+.head{
+    text-align: center;
+}
+#trip_title{
+    text-align : center;
+    text-decoration: underline;
+    font-family:  Georgia, 'Times New Roman', Times, serif;
+}
+#trip-img{
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+    background-size: 100%100%;
+}
+.tab {
+    width:150%;
+    border: none;
+}
+
+.tab button {
+    background-color:white;
+    border: none;
+    outline: none;
+    padding: 16px 16px;
+    font-size: 15px;
+    font-family: cursive;
+    width: 7%;
+    
+}
+#one_way
+{
+    width:15%;
+    margin-left:2%;
+    background-color:white;
+    border: none;
+    border-color: white;
+    padding: 16px 16px;
+    font-size: 15px;
+    font-family: cursive;
+    text-decoration: underline;
+}
+#round_trip{
+    width:15%;
+    background-color:white;
+    border: none;
+    border-color: white;
+    padding: 16px 16px;
+    font-size: 15px;
+    font-family: cursive;
+    border-radius: 10%;
+    opacity: 0.3;
+}
+a{
+    cursor: pointer;
+}
+.reqalert{
+    color:orangered;
+
+  }
+#flight_id,#hotel_id{
+    opacity: 0.7;
+}
+#yt{
+    background-color: white;
+}
+#hotel{
+    background-color: white;
+}
+#form_id{
+    margin-left:3%;
+}
+#flight_bck{
+    background-color: white;
+}
+#tab_id{
+    background-color:transparent;
+}
+#left{
+    margin-left: 2%;
+}
+@media (max-width: 600px) {
+    #one_way{
+    margin-left:7%;
+    }
+    .tab button{
+    width:21.7%;
+    }
+    
+    }

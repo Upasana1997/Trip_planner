@@ -1,0 +1,70 @@
+<link href='https://fonts.googleapis.com/css?family=Ruthie' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet'>
+
+<app-header></app-header>
+
+<div class="image-head" id="image-head1" [ngStyle]="{'background-image': 'url(' + imagePath + ')'}">
+  <div style="height: 70px">
+  </div>
+  <div>
+    <h1>Fernweh</h1>
+    <p id="link-to-plan">
+      Plan your perfect getaway
+    </p>
+  </div>
+  <div style="margin-top: 13%">
+    <br>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div>
+    <p id="quote">Explore the world with us...</p>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div id="image-plan">
+        <span class="glyphicon glyphicon-log-in"></span>
+      </div>
+      <h3 class="title">Sign up</h3>
+      <div class="desc">Sign up if you don't have an account, start planning your trip.</div>
+    </div>
+    <div class="col-md-3">
+      <div id="image-plan">
+        <span class="glyphicon glyphicon-book"></span>
+      </div>
+      <h3 class="title">Get a personalized plan</h3>
+      <div class="desc">A complete day-by-day itinerary
+        <br>based on your preferences.</div>
+    </div>
+    <div class="col-md-3">
+      <div id="image-plan">
+        <span class="glyphicon glyphicon-edit"></span>
+      </div>
+      <h3 class="title">Customize it</h3>
+      <div class="desc">Refine your plan. We'll find the
+        <br>best routes and schedules.</div>
+    </div>
+    <div class="col-md-3">
+      <div id="image-plan">
+        <span class="glyphicon glyphicon-check"></span>
+      </div>
+      <h3 class="title">Book it</h3>
+      <div class="desc">Choose from the best hotels
+        <br>and activities.</div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div id="trip-button">
+      <button type="button" class="btn btn-info" id="trip-plan-button" data-toggle="modal" data-target="#myModal">Plan your trip</button>
+  </div>
+  <br>
+  <br>
+  <app-trending-destinations></app-trending-destinations>
+</div>
+
